@@ -1,6 +1,6 @@
 # AmorSaúde GMUD - Sistema de Gerenciamento de Mudanças
 
-![AmorSaúde GMUD Logo](https://via.placeholder.com/150x150.png?text=AmorSaúde+GMUD)
+![AmorSaúde GMUD Logo](https://www.amorsaude.com.br/wp-content/themes/amorsaude/assets/images/amorsaude-logo.svg)
 
 ## 📋 Visão Geral
 
