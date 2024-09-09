@@ -1,6 +1,6 @@
 # AmorSaúde GMUD - Sistema de Gerenciamento de Mudanças
 
-[Page](https://techamorsaude.github.io/gmud-generator)
+[Acessar página publicada](https://techamorsaude.github.io/gmud-generator)
 
 ![AmorSaúde GMUD Logo](https://www.amorsaude.com.br/wp-content/themes/amorsaude/assets/images/amorsaude-logo.svg)
 
