@@ -83,10 +83,10 @@ Este projeto está licenciado sob a Licença MIT - veja o arquivo [LICENSE.md](L
 
 ## 📞 Contato
 
-Seu Nome - [@seu_twitter](https://twitter.com/seu_twitter) - email@example.com
+Seu Nome - [Felipe Belarmino](https://www.linkedin.com/in/felipe-belarmino/) - felipe.gomes@amorsaude.com
 
-Link do Projeto: [https://github.com/seu-usuario/amorsaude-gmud](https://github.com/seu-usuario/amorsaude-gmud)
+Link do Projeto: [Aqui](https://github.com/techamorsaude/gmud-generator)
 
 ---
 
-⌨️ com ❤️ por [Seu Nome](https://github.com/seu-usuario) 😊
+⌨️ com ❤️ por [Felipe Belarmino](https://github.com/felipebelarmino) 😊
