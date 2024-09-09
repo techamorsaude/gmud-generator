@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AmorSaúde GMUD - Gerenciador de Mudanças</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <header>
+        <h1>AmorSaúde GMUD</h1>
+    </header>
+
+    <main class="container animate__animated animate__fadeIn">
+        <section id="gmud-list" aria-labelledby="gmud-list-title">
+            <h2 id="gmud-list-title">GMUDs Salvas</h2>
+            <ul id="savedGmudsList" aria-live="polite"></ul>
+        </section>
+
+        <form id="gmudForm" aria-labelledby="form-title">
+            <h2 id="form-title">Gerador de GMUD</h2>
+
+            <div class="form-group">
+                <label for="tipoGmud">Tipo de GMUD:</label>
+                <select id="tipoGmud" name="tipoGmud" required>
+                    <option value="">Selecione o tipo</option>
+                    <option value="desenvolvimento">Desenvolvimento</option>
+                    <option value="bancoDados">Banco de Dados</option>
+                </select>
+            </div>
+
+            <section id="camposDesenvolvimento" class="hidden section" aria-labelledby="desenvolvimento-title">
+                <h3 id="desenvolvimento-title">GMUD de Desenvolvimento</h3>
+
+                <div class="form-group">
+                    <label for="cardJira">Cards do Jira:</label>
+                    <div id="cardsJira" aria-live="polite"></div>
+                    <input type="text" id="cardJira" name="cardJira" placeholder="Número do card (ex: PROJ-123)">
+                    <input type="text" id="responsavelCard" name="responsavelCard" placeholder="Responsável pelo card">
+                    <button type="button" class="btn btn-add" data-action="addJiraCard">Adicionar Card</button>
+                </div>
+
+                <fieldset>
+                    <legend>Features:</legend>
+                    <div class="checkbox-group">
+                        <label><input type="checkbox" name="feature" value="novafuncionalidade"> Nova
+                            Funcionalidade</label>
+                        <label><input type="checkbox" name="feature" value="correcaobug"> Correção de Bug</label>
+                        <label><input type="checkbox" name="feature" value="melhoriadesempenho"> Melhoria de
+                            Desempenho</label>
+                        <label><input type="checkbox" name="feature" value="refatoracao"> Refatoração</label>
+                        <label><input type="checkbox" name="feature" value="seguranca"> Atualização de Segurança</label>
+                        <label><input type="checkbox" name="feature" value="integracao"> Nova Integração</label>
+                    </div>
+                    <input type="text" id="outrasFeatures" name="outrasFeatures"
+                        placeholder="Outras features (separadas por vírgula)">
+                </fieldset>
+
+                <div class="form-group">
+                    <label for="nomeParticipante">Participantes:</label>
+                    <div id="listaParticipantes" aria-live="polite"></div>
+                    <input type="text" id="nomeParticipante" name="nomeParticipante" placeholder="Nome do participante">
+                    <input type="email" id="emailParticipante" name="emailParticipante"
+                        placeholder="Email do participante">
+                    <input type="tel" id="celularParticipante" name="celularParticipante"
+                        placeholder="Celular do participante">
+                    <input type="text" id="cargoParticipante" name="cargoParticipante"
+                        placeholder="Cargo do participante">
+                    <button type="button" class="btn btn-add" data-action="addParticipant">Adicionar
+                        Participante</button>
+                </div>
+
+                <fieldset>
+                    <legend>Intuito da Alteração:</legend>
+                    <div class="checkbox-group">
+                        <label><input type="checkbox" name="intuito" value="novasfuncionalidades"> Novas
+                            Funcionalidades</label>
+                        <label><input type="checkbox" name="intuito" value="correcaobugs"> Correção de Bugs</label>
+                        <label><input type="checkbox" name="intuito" value="otimizacao"> Otimização</label>
+                        <label><input type="checkbox" name="intuito" value="atualizacaoseguranca"> Atualização de
+                            Segurança</label>
+                        <label><input type="checkbox" name="intuito" value="conformidade"> Conformidade
+                            Regulatória</label>
+                        <label><input type="checkbox" name="intuito" value="escalabilidade"> Melhoria de
+                            Escalabilidade</label>
+                    </div>
+                    <textarea id="outrosIntuitos" name="outrosIntuitos" rows="3"
+                        placeholder="Outros intuitos ou detalhes adicionais"></textarea>
+                </fieldset>
+
+                <fieldset>
+                    <legend>Plano de Ação:</legend>
+                    <div class="checkbox-group">
+                        <label><input type="checkbox" name="planoacao" value="deploy"> Deploy de Código</label>
+                        <label><input type="checkbox" name="planoacao" value="configuracao"> Alteração de
+                            Configuração</label>
+                        <label><input type="checkbox" name="planoacao" value="migracao"> Migração de Dados</label>
+                        <label><input type="checkbox" name="planoacao" value="reinicioservicos"> Reinício de
+                            Serviços</label>
+                        <label><input type="checkbox" name="planoacao" value="atualizacaodependencias"> Atualização de
+                            Dependências</label>
+                        <label><input type="checkbox" name="planoacao" value="testesautomatizados"> Execução de Testes
+                            Automatizados</label>
+                    </div>
+                    <textarea id="detalhesPlanoAcao" name="detalhesPlanoAcao" rows="3"
+                        placeholder="Detalhes adicionais do plano de ação"></textarea>
+                </fieldset>
+
+                <fieldset>
+                    <legend>Implementação:</legend>
+                    <div class="checkbox-group">
+                        <label><input type="checkbox" name="implementacao" value="manual"> Manual</label>
+                        <label><input type="checkbox" name="implementacao" value="automatizada"> Automatizada</label>
+                        <label><input type="checkbox" name="implementacao" value="parcialmenteautomatizada">
+                            Parcialmente Automatizada</label>
+                        <label><input type="checkbox" name="implementacao" value="cicd"> Pipeline CI/CD</label>
+                        <label><input type="checkbox" name="implementacao" value="canary"> Implantação Canary</label>
+                        <label><input type="checkbox" name="implementacao" value="bluegreen"> Blue-Green
+                            Deployment</label>
+                    </div>
+                    <textarea id="detalhesImplementacao" name="detalhesImplementacao" rows="3"
+                        placeholder="Detalhes da implementação"></textarea>
+                </fieldset>
+            </section>
+
+            <section id="camposBancoDados" class="hidden section" aria-labelledby="banco-dados-title">
+                <h3 id="banco-dados-title">GMUD de Banco de Dados</h3>
+
+                <div class="form-group">
+                    <label for="scriptAlter">Script de Alteração:</label>
+                    <textarea id="scriptAlter" name="scriptAlter" rows="5"
+                        placeholder="Insira o script de alteração"></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label for="scriptRollback">Script de Rollback:</label>
+                    <textarea id="scriptRollback" name="scriptRollback" rows="5"
+                        placeholder="Insira o script de rollback"></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label for="nomeResponsavel">Responsáveis:</label>
+                    <div id="listaResponsaveis" aria-live="polite"></div>
+                    <input type="text" id="nomeResponsavel" name="nomeResponsavel" placeholder="Nome do responsável">
+                    <input type="email" id="emailResponsavel" name="emailResponsavel"
+                        placeholder="Email do responsável">
+                    <input type="tel" id="celularResponsavel" name="celularResponsavel"
+                        placeholder="Celular do responsável">
+                    <input type="text" id="cargoResponsavel" name="cargoResponsavel" placeholder="Cargo do responsável">
+                    <button type="button" class="btn btn-add" data-action="addResponsible">Adicionar
+                        Responsável</button>
+                </div>
+
+                <div class="form-group">
+                    <label for="executorScript">Quem irá executar o script:</label>
+                    <input type="text" id="executorScript" name="executorScript" placeholder="Nome do executor">
+                </div>
+
+                <div class="form-group">
+                    <label for="autorizador">Quem irá autorizar:</label>
+                    <input type="text" id="autorizador" name="autorizador" placeholder="Nome do autorizador">
+                </div>
+
+                <fieldset>
+                    <legend>Plano de Ação:</legend>
+                    <div class="checkbox-group">
+                        <label><input type="checkbox" name="planoAcaoBD" value="backup"> Realizar Backup</label>
+                        <label><input type="checkbox" name="planoAcaoBD" value="testeambiente"> Teste em Ambiente de
+                            Homologação</label>
+                        <label><input type="checkbox" name="planoAcaoBD" value="execucaoscript"> Execução do
+                            Script</label>
+                        <label><input type="checkbox" name="planoAcaoBD" value="validacao"> Validação
+                            pós-execução</label>
+                        <label><input type="checkbox" name="planoAcaoBD" value="monitoramento"> Monitoramento de
+                            Performance</label>
+                        <label><input type="checkbox" name="planoAcaoBD" value="revisaopares"> Revisão por Pares</label>
+                    </div>
+                    <textarea id="detalhesPlanoAcaoBD" name="detalhesPlanoAcaoBD" rows="3"
+                        placeholder="Detalhes adicionais do plano de ação"></textarea>
+                </fieldset>
+            </section>
+
+            <!-- Campos comuns -->
+            <div class="form-group">
+                <label for="dataExecucao">Data de Execução:</label>
+                <input type="date" id="dataExecucao" name="dataExecucao" required>
+            </div>
+
+            <div class="form-group">
+                <label for="horaExecucao">Hora de Execução Planejada:</label>
+                <input type="time" id="horaExecucao" name="horaExecucao" required>
+            </div>
+
+            <div class="form-group">
+                <label for="impacto">Impacto da Mudança:</label>
+                <select id="impacto" name="impacto" required>
+                    <option value="">Selecione o impacto</option>
+                    <option value="baixo">Baixo</option>
+                    <option value="medio">Médio</option>
+                    <option value="alto">Alto</option>
+                </select>
+            </div>
+
+            <fieldset>
+                <legend>Plano de Rollback:</legend>
+                <div class="checkbox-group">
+                    <label><input type="checkbox" name="rollback" value="revertercodigo"> Reverter Código</label>
+                    <label><input type="checkbox" name="rollback" value="restaurarbackup"> Restaurar Backup</label>
+                    <label><input type="checkbox" name="rollback" value="rollbackmanual"> Rollback Manual</label>
+                    <label><input type="checkbox" name="rollback" value="reversaoautomatica"> Reversão
+                        Automática</label>
+                    <label><input type="checkbox" name="rollback" value="rollbackparcial"> Rollback Parcial</label>
+                    <label><input type="checkbox" name="rollback" value="rollforwardfix"> Roll-forward (Fix)</label>
+                </div>
+                <textarea id="detalhesRollback" name="detalhesRollback" rows="3"
+                    placeholder="Detalhes adicionais do plano de rollback"></textarea>
+            </fieldset>
+
+            <fieldset>
+                <legend>Testes Prévios Realizados:</legend>
+                <div class="checkbox-group">
+                    <label><input type="checkbox" name="testes" value="unidade"> Testes de Unidade</label>
+                    <label><input type="checkbox" name="testes" value="integracao"> Testes de Integração</label>
+                    <label><input type="checkbox" name="testes" value="sistema"> Testes de Sistema</label>
+                    <label><input type="checkbox" name="testes" value="aceitacao"> Testes de Aceitação</label>
+                </div>
+                <textarea id="detalhesTestes" name="detalhesTestes" rows="3"
+                    placeholder="Detalhes adicionais dos testes realizados"></textarea>
+            </fieldset>
+
+            <fieldset>
+                <legend>Comunicação aos Stakeholders:</legend>
+                <div class="checkbox-group">
+                    <label><input type="checkbox" name="comunicacao" value="email"> E-mail</label>
+                    <label><input type="checkbox" name="comunicacao" value="reuniao"> Reunião</label>
+                    <label><input type="checkbox" name="comunicacao" value="notificacaosistema"> Notificação no
+                        Sistema</label>
+                </div>
+                <textarea id="detalhesComunicacao" name="detalhesComunicacao" rows="3"
+                    placeholder="Detalhes da comunicação aos stakeholders"></textarea>
+            </fieldset>
+
+            <div class="form-actions">
+                <button type="button" class="btn btn-primary" data-action="saveGmudData">Salvar GMUD</button>
+                <button type="button" class="btn btn-secondary" data-action="clearGmudForm">Limpar Formulário</button>
+                <button type="button" class="btn btn-tertiary" data-action="generateGmudDocument">Gerar
+                    Documento</button>
+            </div>
+        </form>
+    </main>
+
+    <div id="printArea" aria-hidden="true"></div>
+
+    <footer>
+        <p>&copy; 2023 AmorSaúde GMUD. Todos os direitos reservados.</p>
+    </footer>
+    <script src="script.js"></script>
+</body>
+
+</html>
